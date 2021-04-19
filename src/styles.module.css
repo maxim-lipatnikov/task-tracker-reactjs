@@ -8,6 +8,12 @@
     border-radius: 20px;
 }
 
+.tasks:hover {
+    position: relative;
+    top: 2px;
+    left: 2px;
+}
+
 .tasks .name {
     font-family: 'PT Root UI', sans-serif;
     font-size: 18px;
@@ -56,4 +62,13 @@
     top: 20px;
     right: 20px;
     
+}
+
+.button:hover {
+
+    background-color: black;
+}
+
+.button:active {
+    background-color: #666666;
 }
