@@ -16,7 +16,8 @@ class TaskList extends React.Component {
 
     handleClick = (id, completed) => {
         this.setState(currentState => {
-            let index = [...currentState.tasks].findIndex(el => el.id === id)
+            const newTasks = [...currentState.tasks]
+            let index = newTasks.findIndex(el => el.id === id)
             currentState.tasks[index] = { ...currentState.tasks[index], completed: !completed }
             return {
                 tasks: currentState.tasks
