@@ -1,0 +1,31 @@
+.container {
+  display: flex;
+  flex-direction: row;
+
+    .project_container {
+      display: flex;
+      flex-direction: column;
+
+      .h1 {
+        font-family: 'PT Root UI', sans-serif;
+        font-size: 40px;
+        line-height: 40px;
+        font-weight: bold;
+        display: flex;
+        margin-left: 120px;
+        top: 30px;
+        margin-bottom: 40px;
+        position: relative;
+        color: black;
+        text-decoration: none;
+
+    }
+    
+    .tasks_container {
+      display: flex;
+      flex-direction: column;
+    }
+  }
+}
+
+

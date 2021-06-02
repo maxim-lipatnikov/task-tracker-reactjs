@@ -6,6 +6,7 @@ import { ThemeContext } from '../App/ThemeContext';
 const cx = classnames.bind(styles)
 
 const Task = (props) => {
+
   return (
     <div className={cx("container")}>
       <ThemeContext.Consumer>

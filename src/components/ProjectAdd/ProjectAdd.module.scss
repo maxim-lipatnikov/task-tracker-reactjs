@@ -1,15 +1,15 @@
 .container {
   display: flex;
+  position: relative;
   // justify-content: center;
-  // align-items: flex-end;
+  // align-items: center;
   flex-direction: column;
-  padding-top: 30px;
-  margin-left: 40px;
+  margin-top: 20px;
+  margin-left: 120px;
 }
 
 .button_container {
   display: flex;
-  // padding-left: 600px;
   // justify-content: center;
   // align-items: center;
 }
@@ -21,9 +21,9 @@
   background-color: #333333;
   border-style: none;
   border-radius: 10px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  display: block;
+  // justify-content: center;
+  // align-items: center;
   position: relative;
   color: white;
   font-family: 'PT Root UI', sans-serif;

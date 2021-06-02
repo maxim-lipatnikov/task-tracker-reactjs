@@ -5,7 +5,7 @@ import { ThemeContext } from "../App/ThemeContext"
 
 const cx = classnames.bind(styles)
 
-const TaskInput = (props) => {
+const Input = (props) => {
   return (
     <ThemeContext.Consumer>
       {theme => (
@@ -20,4 +20,4 @@ const TaskInput = (props) => {
   )
 }
 
-export default TaskInput;
+export default Input;
