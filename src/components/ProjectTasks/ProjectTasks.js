@@ -16,7 +16,6 @@ const ProjectTasks = ({projectsById, tasksById, changeCompletedStatus, addNewTas
         }
     }
     
-
     const { projectId } = useParams()
 
     if (projectId in projectsById) {
@@ -25,14 +24,25 @@ const ProjectTasks = ({projectsById, tasksById, changeCompletedStatus, addNewTas
         const { tasks } = project
         const proj_tasks = (tasks.map(taskId => tasksById[taskId])).reduce(normalizeBy("id"), {})
     
+
     console.log(proj_tasks)
     return (
         <div className={cx("container")}>
             <div className={cx("h1")}>Project: {proj_name}</div>
             <div>
-                <TaskAdd addNewTask={addNewTask} projectId={projectId} taskName={taskName} taskDescription={taskDescription} handleChange={handleChange} />
+                <TaskAdd 
+                // ddNewTask={addNewTask} 
+                tasksById={proj_tasks}
+                projectId={projectId} 
+                // taskName={taskName} 
+                // taskDescription={taskDescription} 
+                // handleChange={handleChange} 
+                />
             </div>
-            <TaskList tasksById={proj_tasks} changeCompletedStatus={changeCompletedStatus} />
+            <TaskList
+                tasksById={proj_tasks}
+                changeCompletedStatus={changeCompletedStatus}
+            />
         </div>
     )
 }
@@ -42,5 +52,5 @@ else {
     )
 }
 }
-
+// const ProjectTasks = connect(mapStateToProps)(ProjectTasksComponent)
 export default ProjectTasks;
