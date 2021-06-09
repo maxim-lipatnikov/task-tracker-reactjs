@@ -49,11 +49,9 @@ class ProjectAddComponent extends React.Component {
 
 const AddProjectButton = ({ theme, handleAddClick }) => {
   return (
-    <div className={cx("button_container")}>
       <button className={cx("button", `button-theme-${theme}`)} onClick={handleAddClick}>
         ADD PROJECT
         </button>
-    </div>
   )
 }
 

@@ -22,7 +22,7 @@ class ToDoListComponent extends React.Component {
                 <Switch>
                     <Route path="/">
                     <div className={cx("project_container")}>
-                        <Link to="/projects"><div className={cx("h1")}>Projects</div></Link>
+                        <Link to="/projects" style={{ textDecoration: 'none' }}><div className={cx("title", `title-theme-${this.props.theme}`)}>Projects</div></Link>
                         <Route path="/projects">
                                 <ProjectAdd />
                                 <ProjectList projectsById={this.props.projects} />

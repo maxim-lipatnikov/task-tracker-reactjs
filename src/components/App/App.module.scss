@@ -1,4 +1,5 @@
 .container {
+  height: 1000%;
   &-theme-dark {
     background-color: #121212;
   }
@@ -24,17 +25,4 @@
     top: 25px;
     position: absolute;
   }
-
-  // .radios {
-  // display: flex;
-  // justify-content: flex-end;
-  // align-items: flex-end;
-  // flex-direction: row;
-  // padding: 31px 40px 31px 0;
-  // font-family: 'PT Root UI', sans-serif;
-  // font-size: 14px;
-  // line-height: 14px;
-  // font-weight: normal;
-  // color: white;
-  // }
 }

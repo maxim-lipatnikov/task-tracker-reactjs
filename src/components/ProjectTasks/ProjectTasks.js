@@ -3,11 +3,16 @@ import TaskList from '../TaskList/TaskList'
 import React from 'react';
 import { useParams, Redirect } from "react-router-dom"
 import styles from './ProjectTasks.module.scss';
-import classnames from 'classnames/bind'
+import classnames from 'classnames/bind';
+import { connect } from "react-redux";
 
 const cx = classnames.bind(styles)
 
-const ProjectTasks = ({ projectsById, tasksById, changeCompletedStatus }) => {
+const mapStateToProps = (state) => ({
+    theme: state.theme.theme
+})
+
+const ProjectTasksComponents = ({ projectsById, tasksById, theme }) => {
 
     const normalizeBy = key => {
         return (data, item) => {
@@ -27,7 +32,7 @@ const ProjectTasks = ({ projectsById, tasksById, changeCompletedStatus }) => {
         console.log(proj_tasks)
         return (
             <div className={cx("container")}>
-                <div className={cx("h1")}>Project: {proj_name}</div>
+                <div className={cx("title", `title-theme-${theme}`)}>Project: {proj_name}</div>
                 <div>
                     <TaskAdd
                         tasksById={tasksById}
@@ -36,7 +41,6 @@ const ProjectTasks = ({ projectsById, tasksById, changeCompletedStatus }) => {
                 </div>
                 <TaskList
                     tasksById={proj_tasks}
-                    changeCompletedStatus={changeCompletedStatus}
                 />
             </div>
         )
@@ -47,4 +51,5 @@ const ProjectTasks = ({ projectsById, tasksById, changeCompletedStatus }) => {
         )
     }
 }
+const ProjectTasks = connect(mapStateToProps)(ProjectTasksComponents)
 export default ProjectTasks;

@@ -13,13 +13,11 @@ const mapStateToProps = (state) => ({
 const ProjectComponent = ({ id, name, theme }) => {
   const project_path = `/projects/${id}/`
   return (
-    <div className={cx("container")}>
           <Link to={project_path}>
             <div className={cx("project", `project-theme-${theme}`)}>
               <div className={cx("name")}>{name}</div>
             </div>
           </Link>
-    </div>
   )
 }
 

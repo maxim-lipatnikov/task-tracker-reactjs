@@ -3,22 +3,31 @@
     position: relative;
     flex-direction: column;
     margin-left: 40px;
-    // justify-content: flex-start;
-    // align-items: flex-start;
-    // right: 600px;
 
-    .h1 {
-        font-family: 'PT Root UI', sans-serif;
-        font-size: 40px;
-        line-height: 40px;
-        font-weight: bold;
-        display: flex;
-        margin-left: 40px;
-        top: 30px;
-        margin-bottom: 30px;
-        position: relative;
-        color: black;
-        
+    .title {
+        &-theme-light {
+            font-family: 'PT Root UI', sans-serif;
+            font-size: 40px;
+            line-height: 40px;
+            font-weight: bold;
+            display: flex;
+            margin-left: 40px;
+            top: 30px;
+            margin-bottom: 30px;
+            position: relative;
+            color: black;
+        }
+        &-theme-dark {
+            font-family: 'PT Root UI', sans-serif;
+            font-size: 40px;
+            line-height: 40px;
+            font-weight: bold;
+            display: flex;
+            margin-left: 40px;
+            top: 30px;
+            margin-bottom: 30px;
+            position: relative;
+            color: white;
+        }
       }
   }
-
