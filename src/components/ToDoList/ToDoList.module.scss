@@ -1,10 +1,13 @@
 .container {
   display: flex;
   flex-direction: row;
+  justify-content: center;
+  align-items: flex-start;
 
     .project_container {
       display: flex;
       flex-direction: column;
+
 
       .title {
         &-theme-light {
@@ -13,7 +16,6 @@
             line-height: 40px;
             font-weight: bold;
             display: flex;
-            margin-left: 120px;
             top: 30px;
             margin-bottom: 30px;
             position: relative;
@@ -25,7 +27,6 @@
             line-height: 40px;
             font-weight: bold;
             display: flex;
-            margin-left: 120px;
             top: 30px;
             margin-bottom: 30px;
             position: relative;
