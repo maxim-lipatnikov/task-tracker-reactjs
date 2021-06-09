@@ -8,7 +8,6 @@ import { handleProjectAdd } from '../../actions/projects/projects'
 const cx = classnames.bind(styles)
 
 const mapStateToProps = (state) => ({
-  // projects: state.projectsById.projects,
   theme: state.theme.theme
 })
 

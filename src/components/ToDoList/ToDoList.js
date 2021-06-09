@@ -6,8 +6,6 @@ import styles from './ToDoList.module.scss';
 import classnames from 'classnames/bind'
 import { Switch, Route, Link, Redirect } from "react-router-dom"
 import { connect } from "react-redux";
-// import { projects } from  '../NormalizeProjects/NormalizeProjects'
-// import { NormalizeProjects } from '../NormalizeProjects/NormalizeProjects'
 
 const cx = classnames.bind(styles)
 
@@ -18,60 +16,6 @@ const mapStateToProps = (state) => ({
   })
 
 class ToDoListComponent extends React.Component {
-
-    // changeCompletedStatus = (id) => {
-    //     const oldTask = this.state.tasksById[id]
-    //     const newTask = { ...oldTask, completed: !oldTask.completed }
-    //     this.setState(currentState => ({
-    //         tasksById: {
-    //             ...currentState.tasksById, [id]: newTask
-    //         }
-    //     }
-    //     ))
-    // }
-
-    // addNewProject = (name) => {
-    //     const projectId = Object.keys(this.state.projectsById).length + 1
-    //     const newProject = {
-    //         id: projectId,
-    //         name: name,
-    //         tasks: []
-    //     }
-    //     this.setState(currentState => {
-    //         const newProjects = { ...currentState.projectsById }
-    //         newProjects[projectId] = newProject
-
-    //         return {
-    //             projectsById: newProjects
-    //         }
-    //     })
-    // }
-
-
-
-    // addNewTask = (event) => {
-    //     const { value: projectId } = event.currentTarget
-    //     const taskId = Object.keys(tasksById).length + 1
-    //     const newTask = {
-    //         id: taskId,
-    //         name: this.state.taskName,
-    //         description: this.state.taskDescription,
-    //         completed: false
-    //     }
-    //     this.setState(currentState => {
-    //         const newTasks = { ...currentState.tasksById }
-    //         newTasks[taskId] = newTask
-    //         const newProjects = { ...currentState.projectsById }
-    //         newProjects[projectId] = { ...newProjects[projectId] }
-    //         newProjects[projectId].tasks = [...newProjects[projectId].tasks, taskId]
-    //         return {
-    //             tasksById: newTasks,
-    //             projectsById: newProjects
-    //         }
-    //     })
-
-    // }
-
     render() {
         return (
             <div className={cx("container")}>
@@ -92,11 +36,6 @@ class ToDoListComponent extends React.Component {
                         <ProjectTasks 
                             projectsById={this.props.projects}
                             tasksById={this.props.tasks}
-                            // changeCompletedStatus={this.changeCompletedStatus}
-                            // addNewTask={this.addNewTask}
-                            // taskName={this.state.taskName}
-                            // taskDescription={this.state.taskDescription}
-                            // handleChange={this.handleChange}
                         />
                         </div>
                     </Route>

@@ -12,20 +12,6 @@ const initialState = {
 export const tasksReducer = (state = initialState, action) => {
     switch (action.type) {
         case TASK_ADD: {
-            // const {taskId, name, description} = action
-            // const newTasksList = {...state.tasks}
-            // newTasksList[taskId] = {
-            //   id: taskId,
-            //   name: name,
-            //   description: description,
-            //   completed: false
-            // }
-            // return { 
-            //   ...state, 
-            //   tasks: newTasksList
-            // }
-
-            // const projectId = action.projectId
             const taskId = Object.keys(state.tasks).length + 1
             const newTasks = { ...state.tasks }
             const newTask = {
@@ -53,10 +39,3 @@ export const tasksReducer = (state = initialState, action) => {
             return state;
     }
 }
-
-    //   addNewTask = (event) => {
-    //     const { value: projectId } = event.currentTarget
-
-    //     this.setState(currentState => {
-
-    //     })

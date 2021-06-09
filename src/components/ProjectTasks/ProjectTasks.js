@@ -47,5 +47,4 @@ const ProjectTasks = ({ projectsById, tasksById, changeCompletedStatus }) => {
         )
     }
 }
-// const ProjectTasks = connect(mapStateToProps)(ProjectTasksComponent)
 export default ProjectTasks;
