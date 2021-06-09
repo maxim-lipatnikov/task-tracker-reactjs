@@ -1,13 +1,13 @@
 import TaskAdd from '../TaskAdd/TaskAdd'
 import TaskList from '../TaskList/TaskList'
 import React from 'react';
-import { useParams, Redirect} from "react-router-dom"
+import { useParams, Redirect } from "react-router-dom"
 import styles from './ProjectTasks.module.scss';
 import classnames from 'classnames/bind'
 
 const cx = classnames.bind(styles)
 
-const ProjectTasks = ({projectsById, tasksById, changeCompletedStatus, addNewTask, taskName, taskDescription, handleChange}) => {
+const ProjectTasks = ({ projectsById, tasksById, changeCompletedStatus }) => {
 
     const normalizeBy = key => {
         return (data, item) => {
@@ -15,7 +15,7 @@ const ProjectTasks = ({projectsById, tasksById, changeCompletedStatus, addNewTas
             return data
         }
     }
-    
+
     const { projectId } = useParams()
 
     if (projectId in projectsById) {
@@ -23,34 +23,29 @@ const ProjectTasks = ({projectsById, tasksById, changeCompletedStatus, addNewTas
         const proj_name = project.name
         const { tasks } = project
         const proj_tasks = (tasks.map(taskId => tasksById[taskId])).reduce(normalizeBy("id"), {})
-    
 
-    console.log(proj_tasks)
-    return (
-        <div className={cx("container")}>
-            <div className={cx("h1")}>Project: {proj_name}</div>
-            <div>
-                <TaskAdd 
-                // ddNewTask={addNewTask} 
-                tasksById={proj_tasks}
-                projectId={projectId} 
-                // taskName={taskName} 
-                // taskDescription={taskDescription} 
-                // handleChange={handleChange} 
+        console.log(proj_tasks)
+        return (
+            <div className={cx("container")}>
+                <div className={cx("h1")}>Project: {proj_name}</div>
+                <div>
+                    <TaskAdd
+                        tasksById={tasksById}
+                        projectId={projectId}
+                    />
+                </div>
+                <TaskList
+                    tasksById={proj_tasks}
+                    changeCompletedStatus={changeCompletedStatus}
                 />
             </div>
-            <TaskList
-                tasksById={proj_tasks}
-                changeCompletedStatus={changeCompletedStatus}
-            />
-        </div>
-    )
-}
-else {
-    return (
-        <Redirect to='/' />
-    )
-}
+        )
+    }
+    else {
+        return (
+            <Redirect to='/' />
+        )
+    }
 }
 // const ProjectTasks = connect(mapStateToProps)(ProjectTasksComponent)
 export default ProjectTasks;

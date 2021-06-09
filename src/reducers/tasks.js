@@ -25,8 +25,8 @@ export const tasksReducer = (state = initialState, action) => {
             //   tasks: newTasksList
             // }
 
-            const projectId = action.projectId
-            const taskId = action.taskId
+            // const projectId = action.projectId
+            const taskId = Object.keys(state.tasks).length + 1
             const newTasks = { ...state.tasks }
             const newTask = {
                 id: taskId,
@@ -34,15 +34,10 @@ export const tasksReducer = (state = initialState, action) => {
                 description: action.description,
                 completed: false
             }
-
             newTasks[taskId] = newTask
-            // let newProjects = { ...state.projects }
-            // newProjects[projectId] = { ...newProjects[projectId] }
-            // newProjects[projectId].tasks = [...newProjects[projectId].tasks, taskId]
             return {
                 ...state,
-                tasks: newTasks,
-                // projects: newProjects
+                tasks: newTasks
             }
         }
         case CHANGE_STATUS: {

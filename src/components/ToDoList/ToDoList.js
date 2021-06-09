@@ -12,8 +12,8 @@ import { connect } from "react-redux";
 const cx = classnames.bind(styles)
 
 const mapStateToProps = (state) => ({
-    projectsById: state.projectsById.projects,
-    tasksById: state.tasksById.tasks,
+    projects: state.projectsById.projects,
+    tasks: state.tasksById.tasks,
     theme: state.theme.theme,
   })
 
@@ -81,7 +81,7 @@ class ToDoListComponent extends React.Component {
                         <Link to="/projects"><div className={cx("h1")}>Projects</div></Link>
                         <Route path="/projects">
                                 <ProjectAdd />
-                                <ProjectList projectsById={this.props.projectsById} />
+                                <ProjectList projectsById={this.props.projects} />
                         </Route>
                         </div>
                     </Route>
@@ -90,8 +90,8 @@ class ToDoListComponent extends React.Component {
                     <Route path='/projects/:projectId/'>
                         <div className={cx("tasks_container")}>
                         <ProjectTasks 
-                            projectsById={this.props.projectsById}
-                            tasksById={this.props.tasksById}
+                            projectsById={this.props.projects}
+                            tasksById={this.props.tasks}
                             // changeCompletedStatus={this.changeCompletedStatus}
                             // addNewTask={this.addNewTask}
                             // taskName={this.state.taskName}

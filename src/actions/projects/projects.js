@@ -6,11 +6,8 @@ export const handleProjectAdd = (name) => ({
     name: name
 })
 
-export const handleProjectTaskAdd = (projectId, taskId, name, description) => ({
+export const handleProjectTaskAdd = (taskId, projectId) => ({
     type: PROJECT_TASK_ADD,
     projectId: projectId,
-    taskId: taskId,
-    name: name,
-    description: description,
-    completed: false
+    taskId: taskId
 })

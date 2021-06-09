@@ -5,7 +5,7 @@ export const CHANGE_STATUS = 'CHANGE_STATUS'
 export const handleTaskAdd = (taskId, name, description, projectId) => ({ // action creator
   type: TASK_ADD,
   projectId: projectId,
-  taskId: taskId,
+  // taskId: taskId,
   name: name,
   description: description
 })

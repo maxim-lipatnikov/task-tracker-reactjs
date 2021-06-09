@@ -10,8 +10,8 @@ import { handleProjectTaskAdd } from '../../actions/projects/projects'
 const cx = classnames.bind(styles)
 
 const mapDispatchToProps = (dispatch) => ({
-  dispatchOnTaskAdd: (name, description, projectId, taskId) => dispatch(handleTaskAdd(name, description, projectId, taskId)),
-  dispatchOnProjectTaskAdd: (name, description, projectId, taskId) => dispatch(handleProjectTaskAdd(name, description, projectId, taskId))
+  dispatchOnTaskAdd: (name, description, projectId) => dispatch(handleTaskAdd(name, description, projectId)),
+  dispatchOnProjectTaskAdd: (taskId, projectId) => dispatch(handleProjectTaskAdd(taskId, projectId))
 })
 
 class TaskAddComponent extends React.Component {
@@ -25,13 +25,13 @@ class TaskAddComponent extends React.Component {
     this.setState({ [name]: value })
   }
 
-  handleAddClick = (event) => {
-    event.preventDefault()
+  handleAddClick = () => {
     const projectId = this.props.projectId
     const taskId = Object.keys(this.props.tasksById).length + 1
+    console.log(projectId)
     return [
-      this.props.dispatchOnTaskAdd(projectId, taskId, this.state.name, this.state.description),
-      this.props.dispatchOnProjectTaskAdd(projectId, taskId, this.state.name, this.state.description)
+      this.props.dispatchOnTaskAdd(projectId, this.state.name, this.state.description),
+      this.props.dispatchOnProjectTaskAdd(taskId, projectId)
     ]
   }
 

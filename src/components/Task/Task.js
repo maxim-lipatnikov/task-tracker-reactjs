@@ -1,7 +1,6 @@
 import styles from './Task.module.scss';
 import React from 'react';
 import classnames from "classnames/bind"
-// import { ThemeContext } from '../App/ThemeContext';
 import { connect } from "react-redux";
 import {handleChangeCompletedStatus} from '../../actions/tasks/tasks'
 
@@ -17,6 +16,7 @@ const mapStateToProps = (state) => ({
 
 const TaskComponent = ({id, theme, name, description, completed, dispatchOnStatusChange, tasksById }) => {
   const task = {
+    id: tasksById[id].id,
     name: tasksById[id].name,
     description: tasksById[id].description,
     completed: tasksById[id].completed
