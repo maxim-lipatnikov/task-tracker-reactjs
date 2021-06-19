@@ -2,9 +2,8 @@ import styles from './ProjectAdd.module.scss';
 import React from 'react';
 import classnames from "classnames/bind"
 import Input from '../Input/Input'
-import { connect } from "react-redux";
-import { handleProjectAdd } from '../../actions/projects_tasks'
 import AddProjectButton from './AddProjectButton'
+import { connect } from "react-redux";
 import { fetchProjectUpload } from '../../actions/projects_tasks';
 
 const cx = classnames.bind(styles)
@@ -27,16 +26,8 @@ class ProjectAddComponent extends React.Component {
     this.setState({ [name]: value })
   }
 
-  onProjectAdd = ({name}) => {
-    const project = {
-      name: name
-    }
-    this.props.dispatchOnProjectAdd(project.name)
-  }
-
   handleAddClick = () => {
-    this.onProjectAdd(this.state)
-    this.setState(this.state)
+    return this.props.dispatchOnProjectAdd(this.state.name)
   }
 
   render() {
@@ -48,8 +39,6 @@ class ProjectAddComponent extends React.Component {
     )
   }
 }
-
-
 
 const ProjectAdd = connect(mapStateToProps, mapDispatchToProps)(ProjectAddComponent)
 export default ProjectAdd;
