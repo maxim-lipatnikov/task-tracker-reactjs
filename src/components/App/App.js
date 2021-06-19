@@ -1,8 +1,9 @@
-import TaskList from '../TaskList/TaskList'
+import ToDoList from '../ToDoList/ToDoList'
 import React from 'react';
 import styles from './App.module.scss';
 import classnames from 'classnames/bind'
 import { DEFAULT_THEME, ThemeContext } from "./ThemeContext"
+import { BrowserRouter, Link } from "react-router-dom"
 
 const cx = classnames.bind(styles)
 
@@ -17,8 +18,9 @@ class App extends React.Component {
 
   render() {
     return (
+      <BrowserRouter>
       <div className={cx("header")}>
-        <span className={cx("logo")}>TaskManager</span>
+        <Link to="/"><span className={cx("logo")}>TaskManager</span></Link>
         <div className={cx("radios")}>
           <div>
             <input
@@ -46,10 +48,11 @@ class App extends React.Component {
         </div>
         <div className={cx("container", `container-theme-${this.state.theme}`)}>
           <ThemeContext.Provider value={this.state.theme}>
-            <TaskList />
+            <ToDoList />
           </ThemeContext.Provider>
         </div>
       </div>
+      </BrowserRouter>
     )
   }
 }

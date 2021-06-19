@@ -1,5 +1,6 @@
 .input {
   &-theme-light {
+    display: inline-flex;
     background-color: #eeeeee;
     width: 390px;
     height: 30px;
@@ -30,7 +31,9 @@
   }
 
   &-theme-dark {
+    display: block;
     background-color: #333333;
+    color: white;
     width: 390px;
     height: 30px;
     position: relative;

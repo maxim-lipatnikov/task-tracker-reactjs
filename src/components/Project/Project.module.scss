@@ -1,0 +1,67 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  margin-left: 120px;
+  justify-content: center;
+  align-items: center;
+}
+
+.project {
+  &-theme-light {
+  width: 400px;
+  height: 80px;
+  background-color: #eeeeee;
+  position: relative;
+  display: block;
+  margin-top: 20px;
+  border-radius: 10px;
+
+  &:hover {
+    position: relative;
+    top: 2px;
+    left: 2px;
+  }
+
+  .name {
+    font-family: 'PT Root UI', sans-serif;
+    font-size: 18px;
+    line-height: 18px;
+    font-weight: bold;
+    display: inline-block;
+    left: 20px;
+    top: 10px;
+    position: absolute;
+    color: black;
+  }
+
+  &-theme-dark {
+    width: 400px;
+    height: 80px;
+    background-color: #333333;
+    position: relative;
+    display: inline-block;
+    margin-top: 20px;
+    border-radius: 20px;
+  
+    &:hover {
+      position: relative;
+      top: 2px;
+      left: 2px;
+    }
+  
+    .name {
+      font-family: 'PT Root UI', sans-serif;
+      font-size: 18px;
+      line-height: 18px;
+      font-weight: bold;
+      display: inline-block;
+      left: 20px;
+      top: 10px;
+      position: absolute;
+      color: white;
+    }
+  
+  }
+}
+
+}
