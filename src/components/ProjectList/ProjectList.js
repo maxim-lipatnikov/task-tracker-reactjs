@@ -1,21 +1,20 @@
 import React, { useEffect } from 'react';
 import { connect } from "react-redux";
 import Project from '../Project/Project'
-import { fetchDataLoaded } from '../../actions/projects_tasks';
+import { fetchDataLoad } from '../../actions/projects_tasks';
 
 const mapStateToProps = (state) => ({
   projects: state.data.projectsById
 })
 
 const mapDispatchToProps = (dispatch) => ({
-  dispatchFetchDataLoaded: (projects) => dispatch(fetchDataLoaded(projects))
+  dispatchFetchDataLoaded: (projects) => dispatch(fetchDataLoad(projects))
 })
 
 const ProjectListComponent = ({ projects, dispatchFetchDataLoaded }) => {
-  
   useEffect(() => {
     dispatchFetchDataLoaded()
-  }, [])
+}, [])
 
   if (projects) {
     return Object.values(projects).map(i => <Project
@@ -27,10 +26,11 @@ const ProjectListComponent = ({ projects, dispatchFetchDataLoaded }) => {
     )
 
   }
-  else {
-    return () => new Error('Nothing to render')
+else {
+  return () => {
+      new Error('Nothing to render')
   }
 }
-
+}
 const ProjectList = connect(mapStateToProps, mapDispatchToProps)(ProjectListComponent)
 export default ProjectList;

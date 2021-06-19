@@ -26,7 +26,6 @@ export default class ApiService {
 
   loadProjects = (url = '/projects/') => {
     return this.get(url).then(res => {
-
       const projects = []
       Object.values(res).map((project) => {
         return projects.push({
@@ -69,5 +68,17 @@ export default class ApiService {
       'completed': false
     }
     return this.post(`${url}/${projectId}/tasks/`, task)
+  }
+  
+  changeStatus = (projectId, id, name, description, completed, url='/projects') => {
+    const updatedTask = {
+      name,
+      description,
+      priority: 1,
+      'completed': !completed,
+      'projectId': Number(projectId)
+    }
+    console.log(updatedTask);
+    return this.put(`${url}/${projectId}/tasks/${id}/`, updatedTask)
   }
 }

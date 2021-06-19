@@ -13,7 +13,7 @@ const mapStateToProps = (state) => ({
     projects: state.data.projectsById,
     tasks: state.data.tasksById,
     theme: state.theme.theme,
-  })
+})
 
 class ToDoListComponent extends React.Component {
     render() {
@@ -21,22 +21,24 @@ class ToDoListComponent extends React.Component {
             <div className={cx("container")}>
                 <Switch>
                     <Route path="/">
-                    <div className={cx("project_container")}>
-                        <Link to="/projects" style={{ textDecoration: 'none' }}><div className={cx("title", `title-theme-${this.props.theme}`)}>Projects</div></Link>
-                        <Route path="/projects">
+                        <div className={cx("project_container")}>
+                            <Link to="/projects" style={{ textDecoration: 'none' }}><div className={cx("title", `title-theme-${this.props.theme}`)}>Projects</div></Link>
+                            <Route path="/projects">
                                 <ProjectAdd />
-                                <ProjectList projectsById={this.props.projects} />
-                        </Route>
+                                <ProjectList
+                                // projectsById={this.props.projects}
+                                />
+                            </Route>
                         </div>
                     </Route>
                 </Switch>
                 <Switch>
                     <Route path='/projects/:projectId/'>
                         <div className={cx("tasks_container")}>
-                        <ProjectTasks 
-                            projectsById={this.props.projects}
-                            tasksById={this.props.tasks}
-                        />
+                            <ProjectTasks
+                                projectsById={this.props.projects}
+                                tasksById={this.props.tasks}
+                            />
                         </div>
                     </Route>
                     <Redirect to='/' />

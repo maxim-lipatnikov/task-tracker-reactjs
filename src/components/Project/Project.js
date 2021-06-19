@@ -16,7 +16,7 @@ const ProjectComponent = ({ id, name, theme, tasksCount }) => {
           <Link to={project_path}>
             <div className={cx("project", `project-theme-${theme}`)}>
               <div className={cx("name")}>{name}</div>
-              <div className={cx("tasks")}>Tasks: {tasksCount}</div>
+              <div className={cx("tasks")}>Tasks inside: {tasksCount}</div>
             </div>
           </Link>
   )

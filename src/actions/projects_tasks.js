@@ -1,9 +1,9 @@
 import ApiService from '../components/Api'
-export const CHANGE_STATUS = 'CHANGE_STATUS'
 export const LOAD_PROJECTS = 'LOAD_PROJECTS'
+export const LOAD_TASKS = 'LOAD_TASKS'
 
 
-export const fetchDataLoaded = () => (dispatch) => {
+export const fetchDataLoad = () => (dispatch) => {
     const api = new ApiService()
     api.loadProjects().then( response => {
         const { projectsById, tasksById } = response
@@ -15,21 +15,31 @@ export const fetchDataLoaded = () => (dispatch) => {
     })
 }
 
+export const fetchTasksLoad = (projectId) => (dispatch) => {
+    const api = new ApiService()
+    api.loadTasks(projectId).then( response => {
+        const tasks = response
+        dispatch({
+            type: LOAD_TASKS,
+            tasks: tasks
+        })
+    })
+}
+
 export const fetchProjectUpload = (name) => (dispatch) => {
     const api = new ApiService()
     api.uploadNewProject(name)
-    .then(() => dispatch(fetchDataLoaded()))
+    .then(() => dispatch(fetchDataLoad()))
 }
 
 export const fetchTaskUpload = (projectId, name, description) => (dispatch) => {
     const api = new ApiService()
     api.uploadNewTask(projectId, name, description)
-    .then(() => dispatch(fetchDataLoaded()))
+    .then(() => dispatch(fetchDataLoad()))
 }
 
-
-export const handleChangeCompletedStatus = (id, completed) => ({ // action creator
-    type: CHANGE_STATUS,
-    id: id,
-    completed: completed
-})
+export const fetchStatusChange = (projectId, id, name, description, completed) => (dispatch) => {
+    const api = new ApiService()
+    api.changeStatus(projectId, id, name, description, completed)
+    .then(() => dispatch(fetchTasksLoad(projectId)))
+}
