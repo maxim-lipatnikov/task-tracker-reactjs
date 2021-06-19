@@ -11,8 +11,6 @@ const cx = classnames.bind(styles)
 
 const mapStateToProps = (state) => ({
     theme: state.theme.theme,
-    projects: state.data.projectsById,
-    tasks: state.data.tasksById
 })
 
 const mapDispatchToProps = (dispatch) => ({

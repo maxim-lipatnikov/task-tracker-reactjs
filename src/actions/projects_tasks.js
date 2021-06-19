@@ -19,10 +19,11 @@ export const fetchDataLoaded = () => (dispatch) => {
     })
 }
 
-export const handleProjectAdd = (name) => ({
-    type: PROJECT_ADD,
-    name: name
-})
+export const fetchProjectUpload = (name) => (dispatch) => {
+    const api = new ApiService()
+    api.uploadNewProject(name)
+    .then(() => dispatch(fetchDataLoaded()))
+}
 
 export const handleProjectTaskAdd = (taskId, projectId) => ({
     type: PROJECT_TASK_ADD,

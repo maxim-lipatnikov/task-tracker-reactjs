@@ -16,69 +16,40 @@
 // ]
 
 
-export default function NormalizeState(projectsArray) { 
-    const normalizedProjectsArray = {} // проекты с айдишниками тасок
-    const normalizedTasksArray = {} // все таски 
+const NormalizeState = (data) => { 
+    const normalizedProjects = {}
+    const normalizedTasks = {}
     
     const normilizedState = { 
-      projectsById: normalizedProjectsArray,
-      tasksById: normalizedTasksArray
+      projectsById: normalizedProjects,
+      tasksById: normalizedTasks
     }
 
-    // Получить ID тасок по проекту
-    const getTasksIdsByProject = tasks => {
-      const projectTasksIds = []
-      tasks.map(task => projectTasksIds.push(task.id))
-      return projectTasksIds
+    const getTasksFromProj = (tasks) => {
+      const projectTasks = []
+      tasks.map(task => projectTasks.push(task.id))
+      return projectTasks
     }
 
 
-    projectsArray.map( project => {
+    data.map( project => {
       const projectTasks = project.tasks
       projectTasks.map( task => {
-        return normalizedTasksArray[task.id] = {
+        return normalizedTasks[task.id] = {
           id: task.id,
           name: task.name,
           description: task.description,
           completed: task.completed
         }
       })
-      return normalizedProjectsArray[project.id] = {
+      return normalizedProjects[project.id] = {
         id: project.id,
         name: project.name,
-        tasks: getTasksIdsByProject(project.tasks)
+        tasks: getTasksFromProj(project.tasks)
       }
     })
 
     return normilizedState
-  };
+  }
 
-
-// const NormalizeState = (projects) => {
-//     const normalizeBy = key => {
-//         return (data, item) => {
-//             data[item[key]] = item
-//             return data
-//         }
-//     }
-//     const normalizedTasks = projects
-//         .map(project => project.tasks)
-//         .flat()
-//         .reduce(normalizeBy("id"), {})
-
-//     const normalizedProjects = projects
-//         .map(project => ({
-//             ...project,
-//             tasks: project.tasks.map(task => task.id),
-//         }))
-//         .reduce(normalizeBy("id"), {})
-
-//     const normalizedState = {
-//         projectsById: normalizedProjects,
-//         tasksById: normalizedTasks
-//     }
-
-//     return normalizedState
-// }
-
-// export default NormalizeState
+export default NormalizeState

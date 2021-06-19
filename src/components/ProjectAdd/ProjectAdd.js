@@ -5,6 +5,7 @@ import Input from '../Input/Input'
 import { connect } from "react-redux";
 import { handleProjectAdd } from '../../actions/projects_tasks'
 import AddProjectButton from './AddProjectButton'
+import { fetchProjectUpload } from '../../actions/projects_tasks';
 
 const cx = classnames.bind(styles)
 
@@ -13,7 +14,7 @@ const mapStateToProps = (state) => ({
 })
 
 const mapDispatchToProps = (dispatch) => ({
-  dispatchOnProjectAdd: (name) => dispatch(handleProjectAdd(name))
+  dispatchOnProjectAdd: (name) => dispatch(fetchProjectUpload(name))
 })
 
 class ProjectAddComponent extends React.Component {

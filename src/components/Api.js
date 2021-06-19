@@ -7,7 +7,7 @@ export default class ApiService {
     return fetch(`${this.BASE_URL}${url}`, {
       method,
       headers: {
-        Token: 'Valera',
+        Token: 'MaxLipatnikov',
         'Content-Type': 'application/json'
       },
       body: JSON.stringify(body)
@@ -55,4 +55,19 @@ export default class ApiService {
       .then(res => res)
   }
 
+  uploadNewProject = (name, url='/projects/') => {
+    const project = {
+      name: name
+    }
+    return this.post(url, project)
+  }
+ 
+  uploadNewTask = (projectId, name, description, url='/projects') => {
+    const task = {
+      'name': name,
+      'description': description,
+      'completed': false
+    }
+    return this.post(`${url}/${projectId}/tasks/`, task)
+  }
 }
