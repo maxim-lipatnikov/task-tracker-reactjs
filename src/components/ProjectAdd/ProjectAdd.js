@@ -2,8 +2,9 @@ import styles from './ProjectAdd.module.scss';
 import React from 'react';
 import classnames from "classnames/bind"
 import Input from '../Input/Input'
+import AddProjectButton from './AddProjectButton'
 import { connect } from "react-redux";
-import { handleProjectAdd } from '../../actions/projects/projects'
+import { fetchProjectUpload } from '../../actions/projects_tasks';
 
 const cx = classnames.bind(styles)
 
@@ -12,7 +13,7 @@ const mapStateToProps = (state) => ({
 })
 
 const mapDispatchToProps = (dispatch) => ({
-  dispatchOnProjectAdd: (name) => dispatch(handleProjectAdd(name))
+  dispatchOnProjectAdd: (name) => dispatch(fetchProjectUpload(name))
 })
 
 class ProjectAddComponent extends React.Component {
@@ -25,16 +26,8 @@ class ProjectAddComponent extends React.Component {
     this.setState({ [name]: value })
   }
 
-  onProjectAdd = ({name}) => {
-    const project = {
-      name: name
-    }
-    this.props.dispatchOnProjectAdd(project.name)
-  }
-
   handleAddClick = () => {
-    this.onProjectAdd(this.state)
-    this.setState(this.state)
+    return this.props.dispatchOnProjectAdd(this.state.name)
   }
 
   render() {
@@ -45,14 +38,6 @@ class ProjectAddComponent extends React.Component {
       </div>
     )
   }
-}
-
-const AddProjectButton = ({ theme, handleAddClick }) => {
-  return (
-      <button className={cx("button", `button-theme-${theme}`)} onClick={handleAddClick}>
-        ADD PROJECT
-        </button>
-  )
 }
 
 const ProjectAdd = connect(mapStateToProps, mapDispatchToProps)(ProjectAddComponent)

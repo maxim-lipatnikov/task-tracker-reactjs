@@ -2,32 +2,37 @@ import styles from './Task.module.scss';
 import React from 'react';
 import classnames from "classnames/bind"
 import { connect } from "react-redux";
-import { handleChangeCompletedStatus } from '../../actions/tasks/tasks'
+import { fetchStatusChange } from '../../actions/projects_tasks'
+import CompleteTaskButton from './CompleteTaskButton';
 
 const cx = classnames.bind(styles)
 
-const mapDispatchToProps = (dispatch) => ({
-  dispatchOnStatusChange: (id, completed) => dispatch(handleChangeCompletedStatus(id, completed))
-})
-
 const mapStateToProps = (state) => ({
   theme: state.theme.theme,
+  tasks: state.data.tasksById
 })
 
-const TaskComponent = ({ id, theme, name, description, completed, dispatchOnStatusChange, tasksById }) => {
+const mapDispatchToProps = (dispatch) => ({
+  dispatchOnStatusChange: (projectId, id, name, description, completed) => dispatch(fetchStatusChange(projectId, id, name, description, completed))
+})
+
+const TaskComponent = ({ id, theme, completed, dispatchOnStatusChange, tasks, projectId }) => {
   const task = {
-    id: tasksById[id].id,
-    name: tasksById[id].name,
-    description: tasksById[id].description,
-    completed: tasksById[id].completed
+    id: tasks[id].id,
+    name: tasks[id].name,
+    description: tasks[id].description
+  }
+
+  const handleClick = () => {
+      return dispatchOnStatusChange(projectId, task.id, task.name, task.description, completed)
   }
 
   return (
     <div className={cx("task", `task-theme-${theme}`)}>
-      <div className={cx("name")}>{name}</div>
-      <div className={cx("description")}>{description}</div>
+      <div className={cx("name")}>{task.name}</div>
+      <div className={cx("description")}>{task.description}</div>
       <div className={cx("completed")}>Completed: {String(completed)}</div>
-      <button className={cx("button", `button-theme-${theme}`)} onClick={() => dispatchOnStatusChange(task.id, task.completed)}>DONE</button>
+      <CompleteTaskButton handleClick={handleClick} />
     </div>
   )
 }

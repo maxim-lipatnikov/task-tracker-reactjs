@@ -4,14 +4,12 @@ import classnames from "classnames/bind"
 import Input from '../Input/Input'
 import AddTaskButton from './AddTaskButton'
 import { connect } from "react-redux";
-import { handleTaskAdd } from '../../actions/tasks/tasks'
-import { handleProjectTaskAdd } from '../../actions/projects/projects'
+import { fetchTaskUpload } from '../../actions/projects_tasks'
 
 const cx = classnames.bind(styles)
 
 const mapDispatchToProps = (dispatch) => ({
-  dispatchOnTaskAdd: (name, description, projectId) => dispatch(handleTaskAdd(name, description, projectId)),
-  dispatchOnProjectTaskAdd: (taskId, projectId) => dispatch(handleProjectTaskAdd(taskId, projectId))
+  dispatchOnTaskAdd: (name, description, projectId) => dispatch(fetchTaskUpload(name, description, projectId))
 })
 
 class TaskAddComponent extends React.Component {
@@ -27,12 +25,7 @@ class TaskAddComponent extends React.Component {
 
   handleAddClick = () => {
     const projectId = this.props.projectId
-    const taskId = Object.keys(this.props.tasksById).length + 1
-    console.log(projectId)
-    return [
-      this.props.dispatchOnTaskAdd(projectId, this.state.name, this.state.description),
-      this.props.dispatchOnProjectTaskAdd(taskId, projectId)
-    ]
+    return this.props.dispatchOnTaskAdd(projectId, this.state.name, this.state.description)
   }
 
   render() {
