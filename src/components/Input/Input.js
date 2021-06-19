@@ -1,23 +1,24 @@
 import styles from './Input.module.scss';
 import React from 'react';
 import classnames from "classnames/bind"
-import { ThemeContext } from "../App/ThemeContext"
+import { connect } from "react-redux";
 
 const cx = classnames.bind(styles)
 
-const Input = (props) => {
+const mapStateToProps = (state) => ({
+  theme: state.theme.theme
+})
+
+const InputComponent = ({placeholder, value, onChange, name, theme}) => {
   return (
-    <ThemeContext.Consumer>
-      {theme => (
         <input
           className={cx("input", `input-theme-${theme}`)}
-          placeholder={props.placeholder}
-          value={props.value}
-          onChange={props.onChange}
-          name={props.name} />
-      )}
-    </ThemeContext.Consumer>
+          placeholder={placeholder}
+          value={value}
+          onChange={onChange}
+          name={name} />
   )
 }
 
+const Input = connect(mapStateToProps)(InputComponent)
 export default Input;

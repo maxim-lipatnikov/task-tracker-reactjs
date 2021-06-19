@@ -2,31 +2,50 @@ import styles from './TaskAdd.module.scss';
 import React from 'react';
 import classnames from "classnames/bind"
 import Input from '../Input/Input'
-import { ThemeContext } from "../App/ThemeContext"
+import AddTaskButton from './AddTaskButton'
+import { connect } from "react-redux";
+import { handleTaskAdd } from '../../actions/tasks/tasks'
+import { handleProjectTaskAdd } from '../../actions/projects/projects'
 
 const cx = classnames.bind(styles)
 
-const TaskAdd = ({addNewTask, taskName, taskDescription, projectId, handleChange}) => {
-  return (
-    <div className={cx("container")}>
-      <Input placeholder='Enter task name' value={taskName} onChange={handleChange} name="taskName" />
-      <Input placeholder='Enter task description' value={taskDescription} onChange={handleChange} name="taskDescription" />
-      <AddTaskButton projectId={projectId} addNewTask={addNewTask} />
-    </div>
-  )
-}
+const mapDispatchToProps = (dispatch) => ({
+  dispatchOnTaskAdd: (name, description, projectId) => dispatch(handleTaskAdd(name, description, projectId)),
+  dispatchOnProjectTaskAdd: (taskId, projectId) => dispatch(handleProjectTaskAdd(taskId, projectId))
+})
 
-const AddTaskButton = ({projectId, addNewTask}) => {
-  return (
-    <div className={cx("button_container")}>
-      <ThemeContext.Consumer>
-        {theme => (
-      <button value={projectId} className={cx("button", `button-theme-${theme}`)} onClick={addNewTask}>
-        ADD TASK
-        </button>)}
-      </ThemeContext.Consumer>
+class TaskAddComponent extends React.Component {
+  state = {
+    name: '',
+    description: ''
+  }
+
+  handleChange = (event) => {
+    const { value, name } = event.currentTarget
+    this.setState({ [name]: value })
+  }
+
+  handleAddClick = () => {
+    const projectId = this.props.projectId
+    const taskId = Object.keys(this.props.tasksById).length + 1
+    console.log(projectId)
+    return [
+      this.props.dispatchOnTaskAdd(projectId, this.state.name, this.state.description),
+      this.props.dispatchOnProjectTaskAdd(taskId, projectId)
+    ]
+  }
+
+  render() {
+    return (
+      <div className={cx("container")}>
+        <Input placeholder='Enter task name' value={this.state.name} onChange={this.handleChange} name="name" />
+        <Input placeholder='Enter task description' value={this.state.description} onChange={this.handleChange} name="description" />
+        <AddTaskButton projectId={this.props.projectId} handleAddClick={this.handleAddClick} />
       </div>
-  )
+
+    )
+  }
 }
 
+const TaskAdd = connect(null, mapDispatchToProps)(TaskAddComponent)
 export default TaskAdd;

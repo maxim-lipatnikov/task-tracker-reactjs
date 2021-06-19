@@ -1,25 +1,19 @@
-.container {
-  display: flex;
-  flex-direction: column;
-  margin-left: 120px;
-  justify-content: center;
-  align-items: center;
-}
-
 .project {
   &-theme-light {
   width: 400px;
   height: 80px;
   background-color: #eeeeee;
   position: relative;
-  display: block;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
   margin-top: 20px;
   border-radius: 10px;
 
   &:hover {
     position: relative;
-    top: 2px;
-    left: 2px;
+    filter: drop-shadow(0 0 0.35rem grey)
   }
 
   .name {
@@ -32,21 +26,23 @@
     top: 10px;
     position: absolute;
     color: black;
-  }
+  }}
 
   &-theme-dark {
     width: 400px;
     height: 80px;
     background-color: #333333;
     position: relative;
-    display: inline-block;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
     margin-top: 20px;
-    border-radius: 20px;
+    border-radius: 10px;
   
     &:hover {
       position: relative;
-      top: 2px;
-      left: 2px;
+      filter: drop-shadow(0 0 0.35rem grey)
     }
   
     .name {
@@ -62,6 +58,4 @@
     }
   
   }
-}
-
 }
