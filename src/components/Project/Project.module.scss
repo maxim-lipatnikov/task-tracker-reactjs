@@ -28,6 +28,18 @@
     color: black;
   }}
 
+  .tasks {
+    font-family: 'PT Root UI', sans-serif;
+    font-size: 12px;
+    line-height: 12px;
+    font-weight: bold;
+    display: inline-block;
+    left: 21px;
+    bottom: 10px;
+    position: absolute;
+    color: black;
+  }
+
   &-theme-dark {
     width: 400px;
     height: 80px;
@@ -53,6 +65,18 @@
       display: inline-block;
       left: 20px;
       top: 10px;
+      position: absolute;
+      color: white;
+    }
+
+    .tasks {
+      font-family: 'PT Root UI', sans-serif;
+      font-size: 12px;
+      line-height: 12px;
+      font-weight: bold;
+      display: inline-block;
+      left: 21px;
+      bottom: 10px;
       position: absolute;
       color: white;
     }

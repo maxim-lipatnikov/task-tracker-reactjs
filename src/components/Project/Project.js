@@ -10,12 +10,13 @@ const mapStateToProps = (state) => ({
   theme: state.theme.theme
 })
 
-const ProjectComponent = ({ id, name, theme }) => {
+const ProjectComponent = ({ id, name, theme, tasksCount }) => {
   const project_path = `/projects/${id}/`
   return (
           <Link to={project_path}>
             <div className={cx("project", `project-theme-${theme}`)}>
               <div className={cx("name")}>{name}</div>
+              <div className={cx("tasks")}>Tasks: {tasksCount}</div>
             </div>
           </Link>
   )

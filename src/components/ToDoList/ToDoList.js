@@ -10,8 +10,8 @@ import { connect } from "react-redux";
 const cx = classnames.bind(styles)
 
 const mapStateToProps = (state) => ({
-    projects: state.projectsById.projects,
-    tasks: state.tasksById.tasks,
+    projects: state.data.projectsById,
+    tasks: state.data.tasksById,
     theme: state.theme.theme,
   })
 

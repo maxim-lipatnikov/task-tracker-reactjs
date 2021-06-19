@@ -1,18 +1,25 @@
 import TaskAdd from '../TaskAdd/TaskAdd'
 import TaskList from '../TaskList/TaskList'
-import React from 'react';
+import React, {useEffect} from 'react';
 import { useParams, Redirect } from "react-router-dom"
 import styles from './ProjectTasks.module.scss';
 import classnames from 'classnames/bind';
 import { connect } from "react-redux";
+import { fetchDataLoaded } from '../../actions/projects_tasks';
 
 const cx = classnames.bind(styles)
 
 const mapStateToProps = (state) => ({
-    theme: state.theme.theme
+    theme: state.theme.theme,
+    projects: state.data.projectsById,
+    tasks: state.data.tasksById
 })
 
-const ProjectTasksComponents = ({ projectsById, tasksById, theme }) => {
+const mapDispatchToProps = (dispatch) => ({
+    dispatchFetchDataLoaded: (projects) => dispatch(fetchDataLoaded(projects))
+})
+
+const ProjectTasksComponents = ({ projectsById, tasksById, theme, dispatchFetchDataLoaded }) => {
 
     const normalizeBy = key => {
         return (data, item) => {
@@ -22,6 +29,9 @@ const ProjectTasksComponents = ({ projectsById, tasksById, theme }) => {
     }
 
     const { projectId } = useParams()
+    useEffect(() => {
+        dispatchFetchDataLoaded()
+    }, [])
 
     if (projectId in projectsById) {
         const project = projectsById[projectId]
@@ -51,5 +61,5 @@ const ProjectTasksComponents = ({ projectsById, tasksById, theme }) => {
         )
     }
 }
-const ProjectTasks = connect(mapStateToProps)(ProjectTasksComponents)
+const ProjectTasks = connect(mapStateToProps, mapDispatchToProps)(ProjectTasksComponents)
 export default ProjectTasks;
