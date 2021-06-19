@@ -13,10 +13,8 @@ const mapStateToProps = (state) => ({
 })
 
 class AppComponent extends React.Component {
-
   render() {
     return (
-
       <BrowserRouter>
       <div className={cx("header")}>
         <Link to="/"><span className={cx("logo")}>TaskManager</span></Link>

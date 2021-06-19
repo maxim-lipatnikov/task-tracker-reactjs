@@ -3,7 +3,8 @@ import React from 'react';
 import classnames from "classnames/bind"
 import Input from '../Input/Input'
 import { connect } from "react-redux";
-import { handleProjectAdd } from '../../actions/projects/projects'
+import { handleProjectAdd } from '../../actions/projects_tasks'
+import AddProjectButton from './AddProjectButton'
 
 const cx = classnames.bind(styles)
 
@@ -47,13 +48,7 @@ class ProjectAddComponent extends React.Component {
   }
 }
 
-const AddProjectButton = ({ theme, handleAddClick }) => {
-  return (
-      <button className={cx("button", `button-theme-${theme}`)} onClick={handleAddClick}>
-        ADD PROJECT
-        </button>
-  )
-}
+
 
 const ProjectAdd = connect(mapStateToProps, mapDispatchToProps)(ProjectAddComponent)
 export default ProjectAdd;

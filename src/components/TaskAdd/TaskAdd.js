@@ -4,8 +4,8 @@ import classnames from "classnames/bind"
 import Input from '../Input/Input'
 import AddTaskButton from './AddTaskButton'
 import { connect } from "react-redux";
-import { handleTaskAdd } from '../../actions/tasks/tasks'
-import { handleProjectTaskAdd } from '../../actions/projects/projects'
+import { handleTaskAdd } from '../../actions/projects_tasks'
+import { handleProjectTaskAdd } from '../../actions/projects_tasks'
 
 const cx = classnames.bind(styles)
 

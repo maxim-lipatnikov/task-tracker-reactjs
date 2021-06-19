@@ -15,7 +15,7 @@ export const projects = [
     }
 ]
 
-export const NormalizeProjects = () => {
+const NormalizeState = () => {
     const normalizeBy = key => {
         return (data, item) => {
             data[item[key]] = item
@@ -42,4 +42,4 @@ export const NormalizeProjects = () => {
     return normalizedState
 }
 
-// export default NormalizeProjects
+export default NormalizeState

@@ -2,7 +2,7 @@ import styles from './Task.module.scss';
 import React from 'react';
 import classnames from "classnames/bind"
 import { connect } from "react-redux";
-import { handleChangeCompletedStatus } from '../../actions/tasks/tasks'
+import { handleChangeCompletedStatus } from '../../actions/projects_tasks'
 
 const cx = classnames.bind(styles)
 
